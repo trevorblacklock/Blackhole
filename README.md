@@ -14,7 +14,8 @@ a little bland.
 
 ## Building
 
-All dependencies are managed with [CPM][cpm-link] so just run the following:
+All dependencies are managed with [CPM][cpm-link] so just run the following (you
+may need python installed):
 
 ```bash
 mkdir build
