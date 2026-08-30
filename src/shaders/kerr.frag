@@ -22,7 +22,7 @@ struct packedGrad {
     vec4 pdot;
 };
 
-const float epsilon = 1e-3;
+const float epsilon = 1e-2;
 const mat4 perturbation = mat4(epsilon);
 const mat4 minkowski = mat4(
         -1.0, 0.0, 0.0, 0.0,
