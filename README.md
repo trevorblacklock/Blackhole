@@ -1,6 +1,6 @@
 # Blackhole Simulation
 
-![alt text](simulation-sample.png "Kerr Black hole Simulation")
+![alt text](simulation-sample-img.png "Kerr Black hole Simulation")
 
 This is a plain but realistic real-time raytraced simulation of a black 
 hole using OpenGL. By default this uses the [Kerr metric][kerr-link] but a shader 
