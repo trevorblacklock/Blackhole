@@ -24,15 +24,6 @@ cmake ..
 make -j
 ```
 
-Since the image loader I chose; [SPNG][spng-link] does not rely on zlib this
-should be possible to build on Windows but this has not been tested. Check
-out [Here][spng-windows-link] for information on linking with [Miniz][miniz-link]
-if you would like to try compiling on windows.
-
 [kerr-link]: https://en.wikipedia.org/wiki/Kerr_metric
 [schwarz-link]: https://en.wikipedia.org/wiki/Schwarzschild_metric
-
 [cpm-link]: https://github.com/cpm-cmake/CPM.cmake
-[spng-link]: https://github.com/randy408/libspng/
-[spng-windows-link]: https://github.com/randy408/libspng/
-[miniz-link]: https://github.com/richgel999/miniz
