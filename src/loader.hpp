@@ -5,7 +5,6 @@
 #include <fstream>
 #include <iostream>
 #include <ranges>
-#include <spng.h>
 #include <thread>
 #include <vector>
 
@@ -13,9 +12,10 @@
 struct Image {
     std::vector<uint8_t> m_data;
     const char*          m_path;
-    uint32_t             m_width, m_height;
+    int32_t              m_width, m_height, m_channels;
     size_t               m_size;
-    bool                 m_flip;
+
+    bool m_flip;
 
     Image(const char* path) : m_path(path) {};
 };

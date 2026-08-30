@@ -11,7 +11,6 @@ include(cmake/CPM.cmake)
 CPMAddPackage("gh:glfw/glfw#3.4")
 CPMAddPackage("gh:g-truc/glm#1.0.1")
 CPMAddPackage("gh:Dav1dde/glad#v0.1.36")
-CPMAddPackage("gh:randy408/libspng#v0.7.4")
 
 add_custom_target(copy_shaders ALL
     COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_BINARY_DIR}/shaders"
@@ -31,12 +30,13 @@ file(GLOB source CONFIGURE_DEPENDS "src/*.cpp")
 
 add_executable(${PROJECT_NAME} ${source})
 
+target_include_directories(${PROJECT_NAME} PRIVATE include/)
+
 target_link_libraries(${PROJECT_NAME}
 PUBLIC
   glad
   glfw
   glm
-  spng
 )
 
 target_compile_definitions(
