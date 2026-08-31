@@ -42,4 +42,5 @@ PUBLIC
 target_compile_definitions(
     ${PROJECT_NAME}
     PUBLIC
-    SHADER_DIR=${CMAKE_SOURCE_DIR}/src/shaders)
+    SHADER_DIR="${CMAKE_BINARY_DIR}/shaders"
+    ASSETS_DIR="${CMAKE_BINARY_DIR}/assets")

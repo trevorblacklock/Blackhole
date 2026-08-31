@@ -63,16 +63,7 @@ void Render::update_viewport() {
     }
 }
 
-void Render::event_loop() {
-    while (!glfwWindowShouldClose(m_window)) {
-        handle_inputs();
-        glfwWaitEvents();
-    }
-}
-
 void Render::loop(RenderItem item) {
-    // Start the event thread
-    std::thread eventThread(&Render::event_loop, this);
 
     // Create a framedata buffer
     FdBuffer fdbuffer(&m_cameraData, &m_blackholeData);
@@ -86,6 +77,10 @@ void Render::loop(RenderItem item) {
     while (!glfwWindowShouldClose(m_window)) {
         // Update the viewport
         frameStart = glfwGetTime();
+
+        glfwPollEvents();
+        handle_inputs();    
+
         update_viewport();
         // Clear the color and depth buffer bit
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -110,7 +105,6 @@ void Render::loop(RenderItem item) {
     }
     // Wait for event thread to finish
     std::cout << std::endl;
-    eventThread.join();
 }
 
 void Render::handle_inputs() {

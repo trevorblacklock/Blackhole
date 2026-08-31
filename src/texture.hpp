@@ -10,9 +10,9 @@
 static constexpr uint8_t cubeFaces = 6;
 
 constexpr std::array<const char*, cubeFaces> skyboxTextures
-    = {"assets/cubemap_posx.png", "assets/cubemap_negx.png",
-       "assets/cubemap_posy.png", "assets/cubemap_negy.png",
-       "assets/cubemap_posz.png", "assets/cubemap_negz.png"};
+    = {ASSETS_DIR "/cubemap_posx.png", ASSETS_DIR "/cubemap_negx.png",
+       ASSETS_DIR "/cubemap_posy.png", ASSETS_DIR "/cubemap_negy.png",
+       ASSETS_DIR "/cubemap_posz.png", ASSETS_DIR "/cubemap_negz.png"};
 
 class Texture {
  public:

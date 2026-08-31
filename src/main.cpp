@@ -4,9 +4,11 @@
 #include "shader.hpp"
 #include "texture.hpp"
 
+#include <cstring>
 #include <fstream>
 #include <iostream>
 #include <vector>
+
 
 int main(int argc, char* argv[]) {
 
@@ -23,15 +25,18 @@ int main(int argc, char* argv[]) {
 
     gladLoadGL();
 
-    Shader  skyboxShader("shaders/simple.vert", "shaders/kerr.frag");
+    auto vertdir = SHADER_DIR "/simple.vert";
+    auto fragdir = SHADER_DIR "/kerr.frag";
+    
+    Shader  skyboxShader(vertdir, fragdir);
     CubeMap skyboxTexture(skyboxTextures, "skybox", 0);
     Cube    skyboxCube(1000);
     Object  skybox(skyboxTexture, skyboxCube, skyboxShader);
     UniformBuffer<CameraData>    skyboxBuffer(0, "skyboxBuffer", skyboxShader);
-    UniformBuffer<BlackholeData> blackholeBuffer(1, "blackholeBuffer",
-                                                 skyboxShader);
-
-    RenderItem items(skybox);
+    UniformBuffer<BlackholeData> blackholeBuffer(1, "blackholeBuffer", skyboxShader);
+        
+    RenderItem items(skybox); 
+        
 
     Render render(window);
     render.fill_buffers(skyboxBuffer, blackholeBuffer);
