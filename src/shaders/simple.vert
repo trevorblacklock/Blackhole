@@ -1,10 +1,10 @@
-#version 460 core
+#version 410 core
 
 layout (location = 0) in vec3 aPosition;
 
 out vec3 tex;
 
-layout(std140, binding = 0) uniform skyboxBuffer
+layout(std140) uniform skyboxBuffer
 {
     mat4 proj;
     mat4 view;

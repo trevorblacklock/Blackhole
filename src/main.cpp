@@ -12,18 +12,37 @@
 
 int main(int argc, char* argv[]) {
 
-    glfwInit();
+    if (!glfwInit()) {
+        std::cerr << "Failed to initialize GLFW" << std::endl;
+        return 1;
+    }
 
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+#else
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+#endif
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     const int width  = 800;
     const int height = 800;
 
     auto window = create_window(width, height, "Blackhole");
+    if (!window) {
+        std::cerr << "Failed to create an OpenGL window" << std::endl;
+        glfwTerminate();
+        return 1;
+    }
 
-    gladLoadGL();
+    if (!gladLoadGL()) {
+        std::cerr << "Failed to load OpenGL functions" << std::endl;
+        glfwDestroyWindow(window);
+        glfwTerminate();
+        return 1;
+    }
 
     auto vertdir = SHADER_DIR "/simple.vert";
     auto fragdir = SHADER_DIR "/kerr.frag";
