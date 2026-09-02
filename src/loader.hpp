@@ -24,7 +24,7 @@ struct Image {
 class ImageLoader {
  private:
     bool                     m_flip;
-    std::atomic<uint16_t>    m_num_active_threads;
+    std::atomic<uint16_t>    m_num_active_threads {0};
     std::vector<std::thread> m_threads;
 
     void reader(Image* image);

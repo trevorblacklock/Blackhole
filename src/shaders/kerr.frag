@@ -1,4 +1,4 @@
-#version 460 core
+#version 410 core
 
 out vec4 fragColor;
 
@@ -6,7 +6,7 @@ in vec3 tex;
 
 uniform samplerCube skybox;
 
-layout(std140, binding = 1) uniform blackholeBuffer {
+layout(std140) uniform blackholeBuffer {
     vec4 blackholePos;
     vec4 cameraPos;
     float time;
